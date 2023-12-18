@@ -1,67 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us</title>
-</head>
-<body>
-
-  <h2>Contact Us</h2>
-
-  <form action="submit.php" method="post">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
-
-    <br>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-
-    <br>
-
-    <label for="message">Message:</label>
-    <textarea id="message" name="message" rows="4" required></textarea>
-
-    <br>
-
-    <button type="submit">Submit</button>
-  </form>
-  
-  <?php
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Get form values
-    $name = isset($_POST["name"]) ? $_POST["name"] : "";
-    $email = isset($_POST["email"]) ? $_POST["email"] : "";
-    $message = isset($_POST["message"]) ? $_POST["message"] : "";
-
-    // You can add additional validation or processing here
-
-    // Send email
-    $to = "a2motivation12345678@gmail.com"; // Replace with your email address
-    $subject = "Contact Form Submission";
-    $headers = "From: $email";
-
-    // Format the email message
-    $emailMessage = "Name: $name\n";
-    $emailMessage .= "Email: $email\n";
-    $emailMessage .= "Message:\n$message";
-
-    // Send the email
-    mail($to, $subject, $emailMessage, $headers);
-
-    // Redirect to a thank you page
-    header("Location: thank-you.html");
-    exit();
-} else {
-    // Redirect to the form if accessed directly
-    header("Location: index.html");
-    exit();
-}
-
-?>
-
-
-</body>
-</html>
+<form
+  action="https://formspree.io/f/mnqeapdp"
+  method="POST"
+>
+  <label>
+    Your email:
+    <input type="email" name="email">
+  </label>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+  <!-- your other form fields go here -->
+  <button type="submit">Send</button>
+</form>
